@@ -15,3 +15,8 @@ Backend behaviour is authoritative in `MacOS/prd_macos.md`; Windows records only
 
 This folder is a sibling of `ludo-agent/` and `ludo-apps/` in the workspace; it has its own
 versioning (not part of either repo).
+
+## License
+
+Business Source License 1.1 (Licensor: wapsol (labs) gmbh) → Apache-2.0 at the change date.
+Source-available, not OSI open-source. See `LICENSE`.
