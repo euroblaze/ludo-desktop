@@ -65,7 +65,13 @@ Keychain ◀─ token        (no MinIO, no agent, no broker — all via apps/api
 
 ## 5. Backend API consumed (Contract A)
 
-All under the authenticated BFF. Endpoints in **bold** are added by epic #94; others exist.
+> **Canonical, client-agnostic version of this section** (tech stack §3, this endpoint table,
+> and the scope rules §7) now lives in **[`ludo-init/docs/contracts-consumer-guide.md`](../../ludo-init/docs/contracts-consumer-guide.md)**,
+> against the canonical schema in `ludo-init/contracts/`. The table below is the macOS-specific
+> view; defer to the consumer guide + contracts where they differ. (The "BFF" is being absorbed
+> into the **gateway** — `ludo-webapps`'s backend retires there.)
+
+All under the authenticated gateway. Endpoints in **bold** are added by epic #94; others exist.
 
 | Purpose | Method · path | Notes |
 |---|---|---|
