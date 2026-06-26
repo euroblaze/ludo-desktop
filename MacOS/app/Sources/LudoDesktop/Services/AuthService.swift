@@ -24,8 +24,9 @@ final class AuthService: NSObject, ASWebAuthenticationPresentationContextProvidi
     var isAuthenticating = false
     var lastError: String?
 
-    /// Live config — the BFF that brokers GitHub OAuth for the desktop app.
-    var bffBaseURL = URL(string: "https://ludo.euroblaze.de")!
+    /// Live config — the BFF that brokers GitHub OAuth for the desktop app. Resolved from
+    /// env / UserDefaults / cluster.yaml default (see `ClientConfig`); never hardcoded (#5).
+    var bffBaseURL = ClientConfig.baseURL
     private let callbackScheme = "ludo-desktop"
     private var verifier: String?
     private var webSession: ASWebAuthenticationSession?

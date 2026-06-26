@@ -27,21 +27,8 @@ struct Account: Identifiable, Codable, Hashable {
 
 private struct AccountList: Codable { let items: [Account] }
 
-/// Migration state machine (ludo-apps `state_index` 0–6).
-enum MigrationState: Int, CaseIterable {
-    case approved = 0, queued, migrating, test, gapFix, delivered, deployed
-    var label: String {
-        switch self {
-        case .approved: return "Approved"
-        case .queued: return "Queued"
-        case .migrating: return "Migrating"
-        case .test: return "Test"
-        case .gapFix: return "Gap-fix"
-        case .delivered: return "Delivered"
-        case .deployed: return "Deployed"
-        }
-    }
-}
+// `MigrationState` (state_index 0–6 + labels) is now generated from the canonical
+// cluster.yaml :: migration.states — see Generated/Generated.swift (CRIE 002 #8).
 
 extension Migration {
     var state: MigrationState { MigrationState(rawValue: stateIndex) ?? .approved }
@@ -49,7 +36,7 @@ extension Migration {
     var statusText: String { agentOutcome ?? state.label }
 }
 
-/// One Contract B event line (NDJSON envelope from `GET /migrations/{id}/events`).
+/// One Contract B event (SSE `data:` envelope from `GET /migrations/{id}/events`).
 struct SessionEvent: Codable {
     let sessionId: String
     let type: String
